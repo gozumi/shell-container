@@ -2,7 +2,9 @@ FROM ubuntu:lunar
 
 RUN apt-get update
 
-RUN apt-get install zsh git -y 
+RUN apt-get install \
+    bat git neovim zsh \
+    -y 
 
 RUN adduser developer
 
