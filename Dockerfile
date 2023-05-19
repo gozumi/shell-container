@@ -21,6 +21,7 @@ RUN git clone https://github.com/marlonrichert/zsh-autocomplete.git /home/${USER
 
 RUN git clone https://github.com/gozumi/dotfiles.git /home/${USERNAME}/git-downloads/dotfiles && \
     ln -s /home/${USERNAME}/git-downloads/dotfiles/.zshrc /home/${USERNAME}/.zshrc && \
-    ln -s /home/${USERNAME}/git-downloads/dotfiles/git-prompt.sh /home/${USERNAME}/git-prompt.sh
+    ln -s /home/${USERNAME}/git-downloads/dotfiles/git-prompt.sh /home/${USERNAME}/git-prompt.sh && \
+    ln -s /home/${USERNAME}/git-downloads/dotfiles/tmux.conf /home/${USERNAME}/tmux.conf
 
 WORKDIR /home/${USERNAME}
