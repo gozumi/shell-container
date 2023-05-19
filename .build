@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Give the image access to the ssh socket
+
+USER_UID=1`id -u`
+USER_GID=1`id -g`
+
+setfacl -m ${USER_UID}:x   $(dirname "${SSH_AUTH_SOCK}")
+setfacl -m ${USER_UID}:rwx "${SSH_AUTH_SOCK}"
+
+podman build --build-arg USER_UID=${USER_UID} --build-arg USER_GID=${USER_GID} . -t my-development-environment
