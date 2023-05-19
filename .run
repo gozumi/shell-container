@@ -1,5 +1,0 @@
-#!/bin/bash
-
-podman run --name dev -ti -d -v $SSH_AUTH_SOCK:$SSH_AUTH_SOCK -v ~/.gitconfig:/home/developer/.gitconfig -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK my-development-environment:latest tail -F anything
-
-# docker run -rm -t -i -v $(dirname $SSH_AUTH_SOCK) -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK ubuntu /bin/bash

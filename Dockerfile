@@ -6,14 +6,8 @@ RUN apt-get install \
     bat git neovim zsh \
     -y 
 ARG USERNAME=developer
-ARG USER_UID=${USER_UID}
-ARG USER_GID=${USER_GID}
-ARG USER_GROUP_ID=${USER_GID}
 
-RUN echo "user ${USER_UID}"
-RUN echo "group ${USER_GID}"
-RUN addgroup --gid ${USER_GROUP_ID} ${USERNAME}
-RUN adduser ${USERNAME} --uid ${USER_UID} --gid ${USER_GROUP_ID}
+RUN adduser ${USERNAME}
 
 RUN chsh -s $(which zsh)
 
