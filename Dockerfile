@@ -3,11 +3,16 @@ FROM ubuntu:lunar
 RUN apt-get update
 
 RUN apt-get install \
-    bat git neovim zsh curl tmux \
+    sudo bat git neovim zsh curl tmux \
     -y 
+
 ARG USERNAME=developer
 
 RUN adduser ${USERNAME}
+
+RUN adduser --disabled-password ${USERNAME} --gecos '' ${USERNAME}
+
+RUN echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 RUN chsh -s $(which zsh)
 
