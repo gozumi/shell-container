@@ -3,7 +3,7 @@ FROM ubuntu:lunar
 RUN apt-get update
 
 RUN apt-get install \
-    sudo bat git neovim zsh curl tmux \
+    bat curl gcc git neovim sudo tmux zsh \
     -y 
 
 ARG USERNAME=developer
