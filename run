@@ -4,6 +4,7 @@ docker run \
     --name dev \
     -d -ti \
     -v ~/.gitconfig:/home/developer/.gitconfig \
+    -v ./.ssh:/home/developer/.ssh \
     my-development-environment:latest \
     zsh
 
