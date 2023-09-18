@@ -1,11 +1,13 @@
 #!/bin/bash
 
+CONTAINER_NAME=shell-development
+
 docker run \
-    --name dev \
+    --name $CONTAINER_NAME \
     -d -ti \
     -v ~/.gitconfig:/home/developer/.gitconfig \
     -v ./.ssh:/home/developer/.ssh \
-    my-development-environment:latest \
+    shell-development:latest \
     zsh
 
-docker exec -ti dev zsh
+docker exec -ti $CONTAINER_NAME zsh

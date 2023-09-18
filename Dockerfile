@@ -21,12 +21,11 @@ USER ${USERNAME}
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -sSf | sh -s -- -y
 
 RUN mkdir /home/${USERNAME}/git-downloads
-
 RUN git clone https://github.com/marlonrichert/zsh-autocomplete.git /home/${USERNAME}/git-downloads/zsh-autocomplete
-
-RUN git clone https://github.com/gozumi/dotfiles.git /home/${USERNAME}/git-downloads/dotfiles && \
-    ln -s /home/${USERNAME}/git-downloads/dotfiles/.zshrc /home/${USERNAME}/.zshrc && \
-    ln -s /home/${USERNAME}/git-downloads/dotfiles/git-prompt.sh /home/${USERNAME}/git-prompt.sh && \
-    ln -s /home/${USERNAME}/git-downloads/dotfiles/tmux.conf /home/${USERNAME}/tmux.conf
+RUN git clone https://github.com/gozumi/dotfiles.git /home/${USERNAME}/git-downloads/dotfiles
+RUN git clone https://github.com/tmux-plugins/tpm /home/${USERNAME}/.tmux/plugins/tpm
+RUN ln -s /home/${USERNAME}/git-downloads/dotfiles/.zshrc /home/${USERNAME}/.zshrc
+RUN ln -s /home/${USERNAME}/git-downloads/dotfiles/git-prompt.sh /home/${USERNAME}/git-prompt.sh
+RUN ln -s /home/${USERNAME}/git-downloads/dotfiles/.tmux.conf /home/${USERNAME}/.tmux.conf
 
 WORKDIR /home/${USERNAME}
