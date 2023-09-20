@@ -2,12 +2,12 @@
 
 CONTAINER_NAME=shell-development
 
-docker run \
+podman run \
     --name $CONTAINER_NAME \
     -d -ti \
     -v ~/.gitconfig:/home/developer/.gitconfig \
-    -v ./.ssh:/home/developer/.ssh \
+    -v ./.ssh:/home/developer/.ssh:U \
     shell-development:latest \
     zsh
 
-docker exec -ti $CONTAINER_NAME zsh
+podman exec -ti $CONTAINER_NAME zsh
