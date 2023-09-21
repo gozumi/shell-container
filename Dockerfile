@@ -3,7 +3,7 @@ FROM ubuntu:lunar
 RUN apt-get update
 
 RUN apt-get install \
-    bat wget gcc git neovim sudo tmux zsh cmake \
+    bat wget gcc git neovim sudo tmux zsh cmake ninja-build gettext cmake unzip curl \
     -y 
 
 ARG USERNAME=developer
@@ -26,9 +26,6 @@ RUN mkdir ${HOME_DIR}/git-downloads
 RUN git clone https://github.com/marlonrichert/zsh-autocomplete.git ${HOME_DIR}/git-downloads/zsh-autocomplete
 RUN git clone https://github.com/gozumi/dotfiles.git ${DOTFILES_DIR}
 RUN git clone https://github.com/tmux-plugins/tpm ${HOME_DIR}/.tmux/plugins/tpm
-RUN wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz -O ${HOME_DIR}/git-downloads/nvim-linux64.tar.gz
-RUN cd ${HOME_DIR}/git-downloads && \
-    tar xvf nvim-linux64.tar.gz
 RUN wget https://github.com/LuaLS/lua-language-server/releases/download/3.7.0/lua-language-server-3.7.0-linux-x64.tar.gz -O ${HOME_DIR}/git-downloads/lua-language-server.tar.gz
 RUN cd ${HOME_DIR}/git-downloads && \
     mkdir lua-language-server && \
@@ -40,7 +37,13 @@ RUN ln -s ${DOTFILES_DIR}/.zshrc ${HOME_DIR}/.zshrc
 RUN ln -s ${DOTFILES_DIR}/git-prompt.sh ${HOME_DIR}/git-prompt.sh
 RUN ln -s ${DOTFILES_DIR}/.tmux.conf ${HOME_DIR}/.tmux.conf
 RUN ln -s ${DOTFILES_DIR}/neovim/init.lua ${HOME_DIR}/.config/nvim/init.lua
-RUN ln -s ${HOME_DIR}/git-downloads/nvim-linux64/bin/nvim ${HOME_DIR}/.local/bin/nvim
 RUN ln -s ${HOME_DIR}/git-downloads/lua-language-server/bin/lua-language-server ${HOME_DIR}/.local/bin/lua-language-server
+
+RUN wget https://github.com/neovim/neovim/archive/refs/tags/stable.tar.gz -O ${HOME_DIR}/git-downloads/nvim-stable.tar.gz
+RUN cd ${HOME_DIR}/git-downloads && \
+    tar xvf nvim-stable.tar.gz
+RUN cd ${HOME_DIR}/git-downloads/neovim-stable && \
+    make CMAKE_BUILD_TYPE=RelWithDebInfo && \
+    sudo make install
 
 WORKDIR ${HOME_DIR}
