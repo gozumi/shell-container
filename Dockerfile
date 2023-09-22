@@ -36,7 +36,7 @@ RUN mkdir -p ${HOME_DIR}/.local/bin
 RUN ln -s ${DOTFILES_DIR}/.zshrc ${HOME_DIR}/.zshrc
 RUN ln -s ${DOTFILES_DIR}/git-prompt.sh ${HOME_DIR}/git-prompt.sh
 RUN ln -s ${DOTFILES_DIR}/.tmux.conf ${HOME_DIR}/.tmux.conf
-RUN ln -s ${DOTFILES_DIR}/neovim/init.lua ${HOME_DIR}/.config/nvim/init.lua
+RUN ln -s ${DOTFILES_DIR}/neovim ${HOME_DIR}/.config/nvim
 RUN ln -s ${HOME_DIR}/git-downloads/lua-language-server/bin/lua-language-server ${HOME_DIR}/.local/bin/lua-language-server
 
 RUN wget https://github.com/neovim/neovim/archive/refs/tags/stable.tar.gz -O ${HOME_DIR}/git-downloads/nvim-stable.tar.gz
