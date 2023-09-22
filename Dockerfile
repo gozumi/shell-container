@@ -30,7 +30,7 @@ RUN wget https://github.com/LuaLS/lua-language-server/releases/download/3.7.0/lu
 RUN cd ${HOME_DIR}/git-downloads && \
     mkdir lua-language-server && \
     tar xvf lua-language-server.tar.gz -C lua-language-server
-RUN mkdir -p ${HOME_DIR}/.config/nvim
+RUN mkdir ${HOME_DIR}/.config
 RUN mkdir -p ${HOME_DIR}/.local/bin
 
 RUN ln -s ${DOTFILES_DIR}/.zshrc ${HOME_DIR}/.zshrc
