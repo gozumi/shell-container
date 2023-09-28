@@ -44,6 +44,8 @@ RUN git clone https://github.com/tmux-plugins/tpm ${HOME_DIR}/.tmux/plugins/tpm
 RUN mkdir ${HOME_DIR}/.config
 RUN mkdir -p ${HOME_DIR}/.local/bin
 
+COPY container-start-script.sh ${HOME_DIR}/.
+
 RUN ln -s ${DOTFILES_DIR}/.zshrc ${HOME_DIR}/.zshrc
 RUN ln -s ${DOTFILES_DIR}/git-prompt.sh ${HOME_DIR}/git-prompt.sh
 RUN ln -s ${DOTFILES_DIR}/.tmux.conf ${HOME_DIR}/.tmux.conf

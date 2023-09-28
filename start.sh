@@ -6,8 +6,6 @@ podman run \
     --name $CONTAINER_NAME \
     -d -ti \
     -v ~/.gitconfig:/home/developer/.gitconfig \
-    -v ./.ssh:/home/developer/.ssh:U \
+    -v ./.ssh:/home/developer/.ssh-host \
     shell-development:latest \
-    zsh
-
-podman exec -ti $CONTAINER_NAME zsh
+    /home/developer/container-start-script.sh 
