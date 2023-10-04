@@ -51,3 +51,4 @@ USER ${USERNAME}
 # RUN ln -s ${HOME_DIR}/git-downloads/lua-language-server/bin/lua-language-server ${HOME_DIR}/.local/bin/lua-language-server
 
 WORKDIR ${HOME_DIR}
+
