@@ -2,12 +2,10 @@ FROM ubuntu:lunar
 
 RUN apt-get update
 
-RUN apt-get install sudo adduser zsh -y
+RUN apt-get install sudo adduser zsh ansible -y
 
 ARG USERNAME=developer
 ARG HOME_DIR=/home/${USERNAME}
-
-RUN apt-get install sudo adduser ansible -y
 
 RUN adduser ${USERNAME}
 
