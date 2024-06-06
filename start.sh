@@ -8,4 +8,5 @@ podman run \
     -v ~/.gitconfig:/home/developer/.gitconfig \
     -v ./.ssh:/home/developer/.ssh-host \
     shell-development:latest \
-    /home/developer/container-start-script.sh 
+    zsh
+    # /home/developer/container-start-script.sh 

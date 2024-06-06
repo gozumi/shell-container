@@ -1,4 +1,4 @@
-FROM ubuntu:lunar
+FROM ubuntu:latest
 
 RUN apt-get update
 

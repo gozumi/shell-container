@@ -1,3 +1,3 @@
 #!/bin/bash
 
-podman exec -ti shell-development zsh
+podman exec -ti -e "TERM=xterm-256color" shell-development zsh
