@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 RUN apt-get update
 
-RUN apt-get install sudo adduser zsh ansible -y
+RUN apt-get install sudo adduser zsh git ansible -y
 
 ARG USERNAME=developer
 ARG HOME_DIR=/home/${USERNAME}
