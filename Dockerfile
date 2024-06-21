@@ -17,4 +17,6 @@ RUN chsh -s $(which zsh)
 
 USER ${USERNAME}
 
+RUN mkdir ${HOME_DIR}/development
+
 WORKDIR ${HOME_DIR}
