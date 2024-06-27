@@ -7,6 +7,7 @@ podman run \
     -d -ti \
     --memory=5g \
     --memory-reservation=4g \
+    --cap-add=CAP_AUDIT_WRITE \
     -v ~/.gitconfig:/home/developer/.gitconfig \
     -v ./.ssh:/home/developer/.ssh-host \
     -v ./:/home/developer/development \
