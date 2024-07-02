@@ -1,22 +1,27 @@
 FROM ubuntu:latest
 
-RUN apt-get update
+RUN apt-get update && apt-get install \
+    sudo adduser zsh git \
+    ansible openssh-server -y
 
-RUN apt-get install sudo adduser zsh git ansible -y
+RUN mkdir /var/run/sshd
+RUN echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# SSH login fix. Otherwise user is kicked off after login
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
 ARG USERNAME=developer
 ARG HOME_DIR=/home/${USERNAME}
 
 RUN adduser ${USERNAME}
-
 RUN adduser --disabled-password ${USERNAME} --gecos '' ${USERNAME}
 
 RUN echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-RUN chsh -s $(which zsh)
+EXPOSE 22
 
-USER ${USERNAME}
+# Generate SSH host keys
+RUN ssh-keygen -A
 
-RUN mkdir ${HOME_DIR}/development
-
-WORKDIR ${HOME_DIR}
+RUN mkdir ${HOME_DIR}/.ssh && chown ${USERNAME}:${USERNAME} ${HOME_DIR}/.ssh
