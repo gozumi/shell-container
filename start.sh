@@ -2,7 +2,7 @@
 
 CONTAINER_NAME=shell-development
 
-podman run -it -d --rm \
+podman run -it -d \
     --name $CONTAINER_NAME \
     --memory=5g \
     --memory-reservation=4g \
