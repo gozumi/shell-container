@@ -4,6 +4,7 @@ CONTAINER_NAME=shell-development
 CONTAINER_DIR=$HOME/container-development
 
 [ ! -d $CONTAINER_DIR ] && mkdir $CONTAINER_DIR
+[ ! -f $CONTAINER_DIR/.zsh_history ] && touch $CONTAINER_DIR/.zsh_history
 
 podman run -it -d \
     --name $CONTAINER_NAME \
@@ -15,7 +16,7 @@ podman run -it -d \
     -v $HOME/.ssh/id_ed25519.pub:/home/developer/.ssh/id_ed25519.pub \
     -v $HOME/.ssh/id_ed25519:/home/developer/.ssh/id_ed25519 \
     -v $HOME/.gitconfig:/home/developer/.gitconfig \
-    -v $HOME/.zsh_history:/home/developer/.zsh_history \
+    -v $CONTAINER_DIR/.zsh_history:/home/developer/.zsh_history \
     -v $CONTAINER_DIR/:/home/developer/development \
     shell-development:latest \
     /usr/sbin/sshd -D -e

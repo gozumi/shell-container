@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 RUN apt-get update && apt-get install \
-    sudo adduser zsh git \
+    sudo adduser zsh git iproute2 \
     ansible openssh-server -y
 
 RUN mkdir /var/run/sshd
