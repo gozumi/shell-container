@@ -11,6 +11,8 @@ podman run -it -d \
     --memory=5g \
     --memory-reservation=4g \
     -p 2222:22 \
+    -p 8080:8080 \
+    -p 3000:3000 \
     --cap-add=CAP_AUDIT_WRITE \
     -v $HOME/.ssh/id_ed25519.pub:/home/developer/.ssh/authorized_keys \
     -v $HOME/.ssh/id_ed25519.pub:/home/developer/.ssh/id_ed25519.pub \
