@@ -18,7 +18,6 @@ podman run -it -d \
     -v $HOME/.ssh/id_ed25519.pub:/home/developer/.ssh/id_ed25519.pub \
     -v $HOME/.ssh/id_ed25519:/home/developer/.ssh/id_ed25519 \
     -v $HOME/.gitconfig:/home/developer/.gitconfig \
-    -v $CONTAINER_DIR/.zsh_history:/home/developer/.zsh_history \
     -v $CONTAINER_DIR/:/home/developer/development \
     shell-development:latest \
     /usr/sbin/sshd -D -e
