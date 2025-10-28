@@ -1,0 +1,26 @@
+# Pre-baked Rust CI image with coverage/test tools
+# Build locally:
+#   docker build -t ghcr.io/<owner>/obatala-rust-ci:1.90-llvmcov-nextest .
+# Push to GHCR:
+#   echo $GHCR_TOKEN | docker login ghcr.io -u <owner> --password-stdin
+#   docker push ghcr.io/<owner>/obatala-rust-ci:1.90-llvmcov-nextest
+# Then in .circleci/config.yml, switch executor image to this tag.
+
+FROM cimg/rust:1.90
+
+USER root
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    bc \
+    jq \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
+
+USER circleci
+
+RUN rustup component add llvm-tools-preview && \
+    cargo install --locked cargo-nextest && \
+    cargo install --locked cargo-llvm-cov
+
+
+RUN cargo nextest --version && cargo llvm-cov --version

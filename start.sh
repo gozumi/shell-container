@@ -6,7 +6,7 @@ CONTAINER_DIR=$HOME/container-development
 [ ! -d $CONTAINER_DIR ] && mkdir $CONTAINER_DIR
 [ ! -f $CONTAINER_DIR/.zsh_history ] && touch $CONTAINER_DIR/.zsh_history
 
-podman run -it -d \
+docker run -it -d \
     --name $CONTAINER_NAME \
     --memory=5g \
     --memory-reservation=4g \

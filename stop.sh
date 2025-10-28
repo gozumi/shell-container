@@ -1,3 +1,3 @@
 #!/bin/bash
 
-podman stop shell-development
+docker stop shell-development

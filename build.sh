@@ -1,3 +1,3 @@
 #!/bin/bash
 
-podman build . -t shell-development:latest
+docker build . -t shell-development:latest
