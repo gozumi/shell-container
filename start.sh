@@ -12,6 +12,9 @@ docker run -it -d \
     --memory-reservation=4g \
     -p 2222:22 \
     -p 0.0.0.0:8100:8100 \
+    -p 54320-54329:54320-54329 \
+    --privileged \
+    -v dind-var-lib-docker:/var/lib/docker \
     --cap-add=CAP_AUDIT_WRITE \
     -v $HOME/.ssh/id_ed25519.pub:/home/developer/.ssh/authorized_keys \
     -v $HOME/.ssh/id_ed25519.pub:/home/developer/.ssh/id_ed25519.pub \
