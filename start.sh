@@ -8,9 +8,9 @@ CONTAINER_DIR=$HOME/container-development
 
 docker run -it -d \
     --name $CONTAINER_NAME \
-    --memory=16g \
+    --memory=18g \
     --memory-reservation=4g \
-    --memory-swap=16g \
+    --memory-swap=18g \
     -p 2222:22 \
     -p 0.0.0.0:8100:8100 \
     -p 54320-54329:54320-54329 \
